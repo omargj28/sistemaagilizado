@@ -1,0 +1,32 @@
+C:\Users\ivan marquez\Documents\Visual Studio 2012\Projects\Sistema Agilizado\Sistema Agilizado\bin\Debug\Sistema Agilizado.exe
+C:\Users\ivan marquez\Documents\Visual Studio 2012\Projects\Sistema Agilizado\Sistema Agilizado\bin\Debug\Sistema Agilizado.pdb
+C:\Users\ivan marquez\Documents\Visual Studio 2012\Projects\Sistema Agilizado\Sistema Agilizado\obj\x86\Debug\Sistema Agilizado.csprojResolveAssemblyReference.cache
+C:\Users\ivan marquez\Documents\Visual Studio 2012\Projects\Sistema Agilizado\Sistema Agilizado\obj\x86\Debug\Sistema_Agilizado.Properties.Resources.resources
+C:\Users\ivan marquez\Documents\Visual Studio 2012\Projects\Sistema Agilizado\Sistema Agilizado\obj\x86\Debug\Sistema Agilizado.csproj.GenerateResource.Cache
+C:\Users\ivan marquez\Documents\Visual Studio 2012\Projects\Sistema Agilizado\Sistema Agilizado\obj\x86\Debug\Sistema Agilizado.exe
+C:\Users\ivan marquez\Documents\Visual Studio 2012\Projects\Sistema Agilizado\Sistema Agilizado\obj\x86\Debug\Sistema Agilizado.pdb
+C:\Users\ivan marquez\Documents\Visual Studio 2012\Projects\Sistema Agilizado\Sistema Agilizado\obj\x86\Debug\Sistema_Agilizado.frmVerTodo.resources
+C:\Users\ivan marquez\Documents\Visual Studio 2012\Projects\Sistema Agilizado\Sistema Agilizado\obj\x86\Debug\Sistema_Agilizado.frmMain.resources
+C:\Users\ivan marquez\Documents\Visual Studio 2012\Projects\Sistema Agilizado\Sistema Agilizado\obj\x86\Debug\Sistema_Agilizado.frmModificar.resources
+C:\Users\DARIO\Desktop\Sistema Agilizado\Sistema Agilizado\obj\x86\Debug\Sistema Agilizado.exe
+C:\Users\DARIO\Desktop\Sistema Agilizado\Sistema Agilizado\obj\x86\Debug\Sistema Agilizado.pdb
+C:\Users\DARIO\Desktop\Sistema Agilizado\Sistema Agilizado\obj\x86\Debug\Sistema Agilizado.csprojResolveAssemblyReference.cache
+C:\Users\DARIO\Desktop\Sistema Agilizado\Sistema Agilizado\obj\x86\Debug\Sistema_Agilizado.frmMain.resources
+C:\Users\DARIO\Desktop\Sistema Agilizado\Sistema Agilizado\obj\x86\Debug\Sistema_Agilizado.frmModificar.resources
+C:\Users\DARIO\Desktop\Sistema Agilizado\Sistema Agilizado\obj\x86\Debug\Sistema_Agilizado.Properties.Resources.resources
+C:\Users\DARIO\Desktop\Sistema Agilizado\Sistema Agilizado\obj\x86\Debug\Sistema_Agilizado.frmVerTodo.resources
+C:\Users\DARIO\Desktop\Sistema Agilizado\Sistema Agilizado\obj\x86\Debug\Sistema Agilizado.csproj.GenerateResource.Cache
+C:\Users\DARIO\Desktop\Sistema Agilizado\Sistema Agilizado\bin\Debug\Sistema Agilizado.exe
+C:\Users\DARIO\Desktop\Sistema Agilizado\Sistema Agilizado\bin\Debug\Sistema Agilizado.pdb
+C:\Users\Omar\Documents\Visual Studio 2010\Projects\Sistema Agilizado2\Sistema Agilizado\obj\x86\Debug\Sistema Agilizado.exe
+C:\Users\Omar\Documents\Visual Studio 2010\Projects\Sistema Agilizado2\Sistema Agilizado\obj\x86\Debug\Sistema Agilizado.pdb
+C:\Users\Omar\Documents\Visual Studio 2010\Projects\Sistema Agilizado2\Sistema Agilizado\obj\x86\Debug\Sistema Agilizado.csprojResolveAssemblyReference.cache
+C:\Users\Omar\Documents\Visual Studio 2010\Projects\Sistema Agilizado2\Sistema Agilizado\obj\x86\Debug\Sistema_Agilizado.frmMain.resources
+C:\Users\Omar\Documents\Visual Studio 2010\Projects\Sistema Agilizado2\Sistema Agilizado\obj\x86\Debug\Sistema_Agilizado.frmModificar.resources
+C:\Users\Omar\Documents\Visual Studio 2010\Projects\Sistema Agilizado2\Sistema Agilizado\obj\x86\Debug\Sistema_Agilizado.Properties.Resources.resources
+C:\Users\Omar\Documents\Visual Studio 2010\Projects\Sistema Agilizado2\Sistema Agilizado\obj\x86\Debug\Sistema_Agilizado.frmVerTodo.resources
+C:\Users\Omar\Documents\Visual Studio 2010\Projects\Sistema Agilizado2\Sistema Agilizado\obj\x86\Debug\Sistema Agilizado.csproj.GenerateResource.Cache
+C:\Users\Omar\Documents\Visual Studio 2010\Projects\Sistema Agilizado2\Sistema Agilizado\bin\Debug\Sistema Agilizado.exe
+C:\Users\Omar\Documents\Visual Studio 2010\Projects\Sistema Agilizado2\Sistema Agilizado\bin\Debug\Sistema Agilizado.pdb
+C:\Users\Omar\Documents\Visual Studio 2010\Projects\Sistema Agilizado2\Sistema Agilizado\bin\Debug\MySql.Data.dll
+C:\Users\Omar\Documents\Visual Studio 2010\Projects\Sistema Agilizado2\Sistema Agilizado\obj\x86\Debug\Sistema_Agilizado.AcercaDe.resources
