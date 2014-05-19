@@ -13,6 +13,7 @@ namespace Sistema_Agilizado
     {
         AdminDB db = new AdminDB();
         DataTable pedidos;
+        bool checar = false;
         public Calendario()
         {
             InitializeComponent();
@@ -20,63 +21,79 @@ namespace Sistema_Agilizado
 
         private void Calendario_Load(object sender, EventArgs e)
         {
-            clbPrioridad.Items.Add("Pedidos anteriores");
-            clbPrioridad.Items.Add("Prioridad Alta");
-            clbPrioridad.Items.Add("Prioridad Media");
-            clbPrioridad.Items.Add("Prioridad Baja");
-            clbPrioridad.SetItemChecked(0, false);
-            clbPrioridad.SetItemChecked(1, true);
-            clbPrioridad.SetItemChecked(2, true);
-            clbPrioridad.SetItemChecked(3, true);
-            //DesplegarFechas(mCalendario.TodayDate.Month);
+            chkPrio1.Checked = true;
+            chkPrio2.Checked = true;
+            chkPrio3.Checked = true;
+            ObtenerPedidos(); 
+            checar = true;
             DesplegarFechas();
+            ComprobarPedidosProx();
         }
 
-        //private void DesplegarFechas(int mes)
-        //{
-        //    pedidos = db.BuscarPedidosPorMes(mes);
-        //    if (pedidos.Rows.Count > 0)
-        //    {
-        //        DateTime[] fechas = new DateTime[pedidos.Rows.Count];
-        //        for (int i = 0; i < pedidos.Rows.Count; i++)
-        //        {
-        //            DataRow pedido = pedidos.Rows[i];
-        //            DateTime fecha = Convert.ToDateTime(pedido["Fecha_entrega"].ToString());
-        //            fechas[i] = fecha;
-        //        }
-        //        mCalendario.BoldedDates = fechas;
-        //    }
-        //}
+        private void ObtenerPedidos()
+        {
+            try
+            {
+                pedidos = db.BuscarPedidos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al momento de obtener los pedidos: " + ex.Message);
+            }
+        }
 
         private void DesplegarFechas()
         {
-            pedidos = db.BuscarPedidos();
             if (pedidos.Rows.Count > 0)
             {
                 DateTime[] fechas = new DateTime[pedidos.Rows.Count];
+                mCalendario.BoldedDates = null;
                 for (int i = 0; i < pedidos.Rows.Count; i++)
                 {
                     DataRow pedido = pedidos.Rows[i];
                     DateTime fecha = Convert.ToDateTime(pedido["Fecha_entrega"].ToString());
                     
-                    //si el boton pedidos anteriores esta seleccionado, no filtrar por fecha, pasar por filtro de prioridades
-
-                    //
-
-                    //si no esta seleccionado
-
-                    //
-                    if (ComprobarPedidoPendiente(fecha))
+                    if (chkPedidos.Checked)
                     {
-                        int prioridad = ComprobarPrioridad(pedido);
-                        
+                        int elementoPrioridad = ComprobarPrioridad(pedido);
+                        switch (elementoPrioridad)
+                        {
+                            case 1:
+                                if (chkPrio1.Checked)
+                                { fechas[i] = fecha; }
+                                break;
+                            case 2:
+                                if (chkPrio2.Checked)
+                                { fechas[i] = fecha; }
+                                break;
+                            case 3:
+                                if (chkPrio3.Checked)
+                                { fechas[i] = fecha; }
+                                break;
+                        }
                     }
                     else
                     {
-                        //pos no lo muestres
+                        if (ComprobarPedidoPendiente(fecha))
+                        {
+                            int elementoPrioridad = ComprobarPrioridad(pedido);
+                            switch (elementoPrioridad)
+                            {
+                                case 1:
+                                    if (chkPrio1.Checked)
+                                    { fechas[i] = fecha; }
+                                    break;
+                                case 2:
+                                    if (chkPrio2.Checked)
+                                    { fechas[i] = fecha; }
+                                    break;
+                                case 3:
+                                    if (chkPrio3.Checked)
+                                    { fechas[i] = fecha; }
+                                    break;
+                            }
+                        }
                     }
-
-                    fechas[i] = fecha;
                 }
                 mCalendario.BoldedDates = fechas;
             }
@@ -90,34 +107,34 @@ namespace Sistema_Agilizado
 
         private int ComprobarPrioridad(DataRow pedido)
         {
-            int prioridad = 0;
-            prioridad += (int)pedido["Diseño"];
-            prioridad += (int)pedido["Tarjetas"];
-            prioridad += (int)pedido["Web"];
-            prioridad += (int)pedido["Folletos"];
-            prioridad += (int)pedido["Volantes"];
-            prioridad += (int)pedido["Impresion"];
-            prioridad += (int)pedido["IFolletos"];
-            prioridad += (int)pedido["ITarjetas"];
-            prioridad += (int)pedido["IVolantes"];
+            int Diseño = (bool)pedido["Diseño"] == true ? 1 : 0;
+            int Tarjetas = (bool)pedido["Tarjetas"] == true ? 1 : 0;
+            int Web = (bool)pedido["Web"] == true ? 1 : 0;
+            int Folletos = (bool)pedido["Folletos"] == true ? 1 : 0;
+            int Volantes = (bool)pedido["Volantes"] == true ? 1 : 0;
+            int Impresion = (bool)pedido["Impresion"] == true ? 1 : 0;
+            int IFolletos = (bool)pedido["IFolletos"] == true ? 1 : 0;
+            int ITarjetas = (bool)pedido["ITarjetas"] == true ? 1 : 0;
+            int IVolantes = (bool)pedido["IVolantes"] == true ? 1 : 0;
+
+            int prioridad = Diseño + Tarjetas + Web + Folletos + Volantes + Impresion + IFolletos + ITarjetas + IVolantes;
+
             if (prioridad > 6)
-            { prioridad = 1; }
+            { return 1; }
             else if (prioridad > 3)
-            { prioridad = 2; }
+            { return 2; }
             else
-            { prioridad = 3; }
-            return prioridad;
+            { return 3; }
         }
 
         private void mCalendario_DateSelected(object sender, DateRangeEventArgs e)
         {
-            //al seleccionar fecha imprimir los datos del pedido en el treeview
             string dia = e.Start.ToShortDateString();
             tvPedidos.Nodes.Clear();
             for (int i = 0; i < pedidos.Rows.Count; i++)
             {
                 DataRow pedido = pedidos.Rows[i];
-                DateTime fecha = Convert.ToDateTime(pedido["Fecha_entrega"].ToString());
+                DateTime fecha = mCalendario.BoldedDates[i];
                 string diaCal = fecha.ToShortDateString();
                 if (dia == diaCal)
                 {
@@ -147,12 +164,19 @@ namespace Sistema_Agilizado
                     tvPedidos.Nodes[nombre].Nodes.Add("Impresión volantes:" + IVolantes);
                 }
             }
-
         }
 
-        private void mCalendario_DateChanged(object sender, DateRangeEventArgs e)
+        private void ComprobarPedidosProx()
         {
-            //DesplegarFechas(e.Start.Month);
+            DateTime despues = mCalendario.TodayDate.AddSeconds(259199);
+            for (int i = 0; i < mCalendario.BoldedDates.Length; i++)
+            {
+                if (mCalendario.BoldedDates[i] > mCalendario.TodayDate && mCalendario.BoldedDates[i] < despues || mCalendario.BoldedDates[i] == mCalendario.TodayDate)
+                {
+                    MessageBox.Show("Hay pedidos próximos a entregar, favor de verificar en calendario");
+                    break;
+                }
+            }
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -166,6 +190,35 @@ namespace Sistema_Agilizado
         private void Calendario_FormClosed(object sender, FormClosedEventArgs e)
         {
             Funciones.CerrarVentanas(null, null);
+        }
+
+        private void chkPedidos_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checar)
+            {
+                tvPedidos.Nodes.Clear();
+                DesplegarFechas();
+            }
+        }
+
+        private void chkPedidos_CheckStateChanged(object sender, EventArgs e)
+        {
+            chkPedidos_CheckedChanged(null, null);
+        }
+
+        private void chkPrio1_CheckStateChanged(object sender, EventArgs e)
+        {
+            chkPedidos_CheckedChanged(null, null);
+        }
+
+        private void chkPrio2_CheckStateChanged(object sender, EventArgs e)
+        {
+            chkPedidos_CheckedChanged(null, null);
+        }
+
+        private void chkPrio3_CheckStateChanged(object sender, EventArgs e)
+        {
+            chkPedidos_CheckedChanged(null, null);
         }
     }
 }
