@@ -261,7 +261,7 @@
             // 
             // datetimeFechaEntregaMain
             // 
-            this.datetimeFechaEntregaMain.CustomFormat = "yyyy-MM-dd hh:mm:ss";
+            this.datetimeFechaEntregaMain.CustomFormat = "yyyy-MM-dd hh:mm:ss tt";
             this.datetimeFechaEntregaMain.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.datetimeFechaEntregaMain.Location = new System.Drawing.Point(106, 109);
             this.datetimeFechaEntregaMain.Name = "datetimeFechaEntregaMain";
@@ -270,7 +270,7 @@
             // 
             // datetimeFechaRegistroMain
             // 
-            this.datetimeFechaRegistroMain.CustomFormat = "yyyy-MM-dd hh:mm:ss";
+            this.datetimeFechaRegistroMain.CustomFormat = "yyyy-MM-dd hh:mm:ss tt";
             this.datetimeFechaRegistroMain.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.datetimeFechaRegistroMain.Location = new System.Drawing.Point(106, 69);
             this.datetimeFechaRegistroMain.Name = "datetimeFechaRegistroMain";
@@ -280,7 +280,7 @@
             // txtNombreMain
             // 
             this.txtNombreMain.Location = new System.Drawing.Point(106, 31);
-            this.txtNombreMain.MaxLength = 30;
+            this.txtNombreMain.MaxLength = 50;
             this.txtNombreMain.Name = "txtNombreMain";
             this.txtNombreMain.Size = new System.Drawing.Size(345, 20);
             this.txtNombreMain.TabIndex = 4;

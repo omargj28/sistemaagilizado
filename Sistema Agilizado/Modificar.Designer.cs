@@ -48,6 +48,7 @@
             this.labelFechaEntregaMain = new System.Windows.Forms.Label();
             this.labelFechaRegistroMain = new System.Windows.Forms.Label();
             this.labelNombreMain = new System.Windows.Forms.Label();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -55,6 +56,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnCancelar);
             this.panel1.Controls.Add(this.chkImpresion);
             this.panel1.Controls.Add(this.chkDiseño);
             this.panel1.Controls.Add(this.groupBox2);
@@ -187,7 +189,7 @@
             // 
             // btnRegistrarMain
             // 
-            this.btnRegistrarMain.Location = new System.Drawing.Point(376, 286);
+            this.btnRegistrarMain.Location = new System.Drawing.Point(376, 253);
             this.btnRegistrarMain.Name = "btnRegistrarMain";
             this.btnRegistrarMain.Size = new System.Drawing.Size(75, 23);
             this.btnRegistrarMain.TabIndex = 16;
@@ -197,7 +199,7 @@
             // 
             // datetimeFechaEntregaMain
             // 
-            this.datetimeFechaEntregaMain.CustomFormat = "yyyy-MM-dd hh:mm:ss";
+            this.datetimeFechaEntregaMain.CustomFormat = "yyyy-MM-dd hh:mm:ss tt";
             this.datetimeFechaEntregaMain.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.datetimeFechaEntregaMain.Location = new System.Drawing.Point(106, 109);
             this.datetimeFechaEntregaMain.Name = "datetimeFechaEntregaMain";
@@ -206,7 +208,7 @@
             // 
             // datetimeFechaRegistroMain
             // 
-            this.datetimeFechaRegistroMain.CustomFormat = "yyyy-MM-dd hh:mm:ss";
+            this.datetimeFechaRegistroMain.CustomFormat = "yyyy-MM-dd hh:mm:ss tt";
             this.datetimeFechaRegistroMain.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.datetimeFechaRegistroMain.Location = new System.Drawing.Point(106, 69);
             this.datetimeFechaRegistroMain.Name = "datetimeFechaRegistroMain";
@@ -216,7 +218,7 @@
             // txtNombreMain
             // 
             this.txtNombreMain.Location = new System.Drawing.Point(106, 31);
-            this.txtNombreMain.MaxLength = 30;
+            this.txtNombreMain.MaxLength = 50;
             this.txtNombreMain.Name = "txtNombreMain";
             this.txtNombreMain.Size = new System.Drawing.Size(345, 20);
             this.txtNombreMain.TabIndex = 4;
@@ -257,6 +259,16 @@
             this.labelNombreMain.Size = new System.Drawing.Size(47, 13);
             this.labelNombreMain.TabIndex = 0;
             this.labelNombreMain.Text = "Nombre:";
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(376, 286);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.TabIndex = 21;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // frmModificar
             // 
@@ -300,6 +312,7 @@
         private System.Windows.Forms.Label labelFechaEntregaMain;
         private System.Windows.Forms.Label labelFechaRegistroMain;
         private System.Windows.Forms.Label labelNombreMain;
+        private System.Windows.Forms.Button btnCancelar;
 
     }
 }

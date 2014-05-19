@@ -19,9 +19,8 @@ namespace Sistema_Agilizado
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            db.Conectar();
-            datetimeFechaRegistroMain.Value = DateTime.Today;
-            datetimeFechaEntregaMain.Value = DateTime.Today.AddDays(1);
+            datetimeFechaRegistroMain.Value = DateTime.Now;
+            datetimeFechaEntregaMain.Value = DateTime.Now.AddDays(1);
         }
 
         private void nuevoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -46,8 +45,7 @@ namespace Sistema_Agilizado
             DateTime fechaEntrega = datetimeFechaEntregaMain.Value;
             try
             {
-                db.insertaPedidos(txtNombreMain.Text, fechaRegistro, fechaEntrega, chkDiseño.Checked, chkTarjetas.Checked, chkPagina.Checked, chkFolletos.Checked, chkVolantes.Checked, chkImpresion.Checked, chkIFolletos.Checked, chkITarjetas.Checked, chkIVolantes.Checked);
-                db.Desconectar();
+                db.InsertarPedidos(txtNombreMain.Text, fechaRegistro, fechaEntrega, chkDiseño.Checked, chkTarjetas.Checked, chkPagina.Checked, chkFolletos.Checked, chkVolantes.Checked, chkImpresion.Checked, chkIFolletos.Checked, chkITarjetas.Checked, chkIVolantes.Checked);
                 MessageBox.Show("Pedido agregado correctamente");
                 nuevoToolStripMenuItem_Click(null, null);
             }

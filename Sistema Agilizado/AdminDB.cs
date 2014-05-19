@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 using MySql.Data.MySqlClient;
 
 namespace Sistema_Agilizado
@@ -12,7 +13,7 @@ namespace Sistema_Agilizado
         static string serv = "Server= localhost;";
         static string db = "Database= sistemaagilizado;";
         static string usuario = "User Id= root;";
-        static string pass = "Password=1234;";
+        static string pass = "Password= 1234;";
 
         string cadenaDeConexion = serv + db + usuario + pass;
 
@@ -37,12 +38,31 @@ namespace Sistema_Agilizado
             sqlConexion.Close();
         }
 
-        public void buscaPedidos()
+        public DataTable BuscarPedidos()
         {
-            //
+            return BuscarPedidos(0);
+        }
+
+        public DataTable BuscarPedidos(int IDPedido)
+        {
+            DataTable dt = new DataTable();
+            string strSQL = "SELECT * FROM pedidos ";
+            if (IDPedido != 0) { strSQL += "WHERE IDPedido = ?IDPedido "; }
+
+            Conectar();
+            comando = new MySqlCommand(strSQL, sqlConexion);
+            comando.Parameters.Add(new MySqlParameter("?IDPedido", IDPedido));
+            adaptador = new MySqlDataAdapter(comando);
+            adaptador.Fill(dt);
+            Desconectar();
+            if (dt == null)
+            {
+                return dt = new DataTable();
+            }
+            return dt;
         }
        
-        public void insertaPedidos(string nombre, DateTime fecha_reg, DateTime fecha_entrega, bool _diseño, bool _tarjetas, bool _web, bool _folletos, bool _volantes, bool _impresion, bool _ifolletos, bool _itarjetas, bool _ivolantes)
+        public void InsertarPedidos(string nombre, DateTime fecha_reg, DateTime fecha_entrega, bool _diseño, bool _tarjetas, bool _web, bool _folletos, bool _volantes, bool _impresion, bool _ifolletos, bool _itarjetas, bool _ivolantes)
         {
             int diseño = _diseño == true ? 1 : 0;
             int tarjetas = _tarjetas == true ? 1 : 0;
@@ -57,6 +77,7 @@ namespace Sistema_Agilizado
             string strSQL = "INSERT INTO pedidos (Nombre, Fecha_reg, Fecha_entrega, Diseño, Tarjetas, Web, Folletos, Volantes, Impresion, IFolletos, ITarjetas, IVolantes) ";
             strSQL += "VALUES (?Nombre, ?Fecha_reg, ?Fecha_entrega, ?Diseño, ?Tarjetas, ?Web, ?Folletos, ?Volantes, ?Impresion, ?IFolletos, ?ITarjetas, ?IVolantes)";
 
+            Conectar();
             comando = new MySqlCommand(strSQL, sqlConexion);
             comando.Parameters.Add(new MySqlParameter("?Nombre", nombre));
             comando.Parameters.Add(new MySqlParameter("?Fecha_reg", fecha_reg));
@@ -71,9 +92,10 @@ namespace Sistema_Agilizado
             comando.Parameters.Add(new MySqlParameter("?ITarjetas", itarjetas));
             comando.Parameters.Add(new MySqlParameter("?IVolantes", ivolantes));
             comando.ExecuteNonQuery();
+            Desconectar();
         }
 
-        public void actualizaPedidos(int IDPedido, string nombre, DateTime fecha_reg, DateTime fecha_entrega, bool _diseño, bool _tarjetas, bool _web, bool _folletos, bool _volantes, bool _impresion, bool _ifolletos, bool _itarjetas, bool _ivolantes)
+        public void ActualizarPedidos(int IDPedido, string nombre, DateTime fecha_reg, DateTime fecha_entrega, bool _diseño, bool _tarjetas, bool _web, bool _folletos, bool _volantes, bool _impresion, bool _ifolletos, bool _itarjetas, bool _ivolantes)
         {
             int diseño = _diseño == true ? 1 : 0;
             int tarjetas = _tarjetas == true ? 1 : 0;
@@ -100,6 +122,7 @@ namespace Sistema_Agilizado
             strSQL += "IVolantes = ?IVolantes ";
             strSQL += "WHERE IDPedido = ?IDPedido";
 
+            Conectar();
             comando = new MySqlCommand(strSQL, sqlConexion);
             comando.Parameters.Add(new MySqlParameter("?Nombre", nombre));
             comando.Parameters.Add(new MySqlParameter("?Fecha_reg", fecha_reg));
@@ -115,6 +138,20 @@ namespace Sistema_Agilizado
             comando.Parameters.Add(new MySqlParameter("?IVolantes", ivolantes));
             comando.Parameters.Add(new MySqlParameter("?IDPedido", IDPedido));
             comando.ExecuteNonQuery();
+            Desconectar();
+        }
+
+        public void EliminarPedidos(int IDPedido)
+        {
+            string strSQL = "DELETE FROM pedidos ";
+            strSQL += "WHERE IDPedido = ?IDPedido";
+
+            Conectar();
+            comando = new MySqlCommand(strSQL, sqlConexion);
+
+            comando.Parameters.Add(new MySqlParameter("?IDPedido", IDPedido));
+            comando.ExecuteNonQuery();
+            Desconectar();
         }
        
     }

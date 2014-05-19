@@ -54,13 +54,13 @@ namespace Sistema_Agilizado
 
         public static void textValidatorNombres(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar >= 'A' && e.KeyChar <= 'z' || e.KeyChar == '\r' || e.KeyChar == '-' || e.KeyChar == '\b' || e.KeyChar == ' ')
+            if (e.KeyChar >= 'A' && e.KeyChar <= 'z' || e.KeyChar == '\r' || e.KeyChar == '-' || e.KeyChar == '\b' || e.KeyChar == ' ' || e.KeyChar >= '0' && e.KeyChar <= '9')
             {
                 e.Handled = false;
             }
             else
             {
-                MessageBox.Show("Solo se permiten letras (A-Z), números, guiones \"-\", y punto \".\"");
+                MessageBox.Show("Solo se permiten letras (A-Z), números, y guiones \"-\"");
                 e.Handled = true;
             }
         }
