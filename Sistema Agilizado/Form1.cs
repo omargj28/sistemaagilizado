@@ -41,17 +41,39 @@ namespace Sistema_Agilizado
 
         private void btnRegistrarMain_Click(object sender, EventArgs e)
         {
-            DateTime fechaRegistro = datetimeFechaRegistroMain.Value;
-            DateTime fechaEntrega = datetimeFechaEntregaMain.Value;
-            try
+            if (txtNombreMain.Text.Trim() != String.Empty)
             {
-                db.InsertarPedidos(txtNombreMain.Text, fechaRegistro, fechaEntrega, chkDiseño.Checked, chkTarjetas.Checked, chkPagina.Checked, chkFolletos.Checked, chkVolantes.Checked, chkImpresion.Checked, chkIFolletos.Checked, chkITarjetas.Checked, chkIVolantes.Checked);
-                MessageBox.Show("Pedido agregado correctamente");
-                nuevoToolStripMenuItem_Click(null, null);
+                DateTime fechaRegistro = datetimeFechaRegistroMain.Value;
+                DateTime fechaEntrega = datetimeFechaEntregaMain.Value;
+                try
+                {
+                    DataTable dt = db.BuscarPedidosPorNombre(txtNombreMain.Text.Trim());
+                    if (dt.Rows.Count == 0)
+                    {
+                        try
+                        {
+                            db.InsertarPedidos(txtNombreMain.Text, fechaRegistro, fechaEntrega, chkDiseño.Checked, chkTarjetas.Checked, chkPagina.Checked, chkFolletos.Checked, chkVolantes.Checked, chkImpresion.Checked, chkIFolletos.Checked, chkITarjetas.Checked, chkIVolantes.Checked);
+                            MessageBox.Show("Pedido agregado correctamente");
+                            nuevoToolStripMenuItem_Click(null, null);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error al momento de agregar: " + ex.Message);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ese nombre ya esta en uso");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al momento de verificar nombres: " + ex.Message);
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Error al momento de agregar: " + ex.Message);
+                MessageBox.Show("Es necesario asignar un nombre a la tarea");
             }
         }
 
@@ -60,15 +82,23 @@ namespace Sistema_Agilizado
             Funciones.textValidatorNombres(sender, e);
         }
 
-        private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Funciones.CerrarVentanas(null, null);
-        }
-
         private void acercaDeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AcercaDe acerca = new AcercaDe();
             acerca.ShowDialog();
+        }
+
+        private void calendarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string nombre = ActiveForm.Name;
+            Calendario cal = new Calendario();
+            cal.Show();
+            Application.OpenForms[nombre].Close();
+        }
+
+        private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Funciones.CerrarVentanas(null, null);
         }
     }
 }

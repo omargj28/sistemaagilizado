@@ -55,6 +55,7 @@
             this.labelFechaEntregaMain = new System.Windows.Forms.Label();
             this.labelFechaRegistroMain = new System.Windows.Forms.Label();
             this.labelNombreMain = new System.Windows.Forms.Label();
+            this.calendarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -76,6 +77,7 @@
             // 
             this.ArchivoMain.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.nuevoToolStripMenuItem,
+            this.calendarioToolStripMenuItem,
             this.verTodoToolStripMenuItem});
             this.ArchivoMain.Name = "ArchivoMain";
             this.ArchivoMain.Size = new System.Drawing.Size(60, 20);
@@ -84,14 +86,14 @@
             // nuevoToolStripMenuItem
             // 
             this.nuevoToolStripMenuItem.Name = "nuevoToolStripMenuItem";
-            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.nuevoToolStripMenuItem.Text = "Nuevo";
             this.nuevoToolStripMenuItem.Click += new System.EventHandler(this.nuevoToolStripMenuItem_Click);
             // 
             // verTodoToolStripMenuItem
             // 
             this.verTodoToolStripMenuItem.Name = "verTodoToolStripMenuItem";
-            this.verTodoToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.verTodoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.verTodoToolStripMenuItem.Text = "Ver Todo";
             this.verTodoToolStripMenuItem.Click += new System.EventHandler(this.verTodoToolStripMenuItem_Click);
             // 
@@ -322,6 +324,13 @@
             this.labelNombreMain.TabIndex = 0;
             this.labelNombreMain.Text = "Nombre:";
             // 
+            // calendarioToolStripMenuItem
+            // 
+            this.calendarioToolStripMenuItem.Name = "calendarioToolStripMenuItem";
+            this.calendarioToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.calendarioToolStripMenuItem.Text = "Calendario";
+            this.calendarioToolStripMenuItem.Click += new System.EventHandler(this.calendarioToolStripMenuItem_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -377,6 +386,7 @@
         private System.Windows.Forms.CheckBox chkFolletos;
         private System.Windows.Forms.CheckBox chkPagina;
         private System.Windows.Forms.CheckBox chkTarjetas;
+        private System.Windows.Forms.ToolStripMenuItem calendarioToolStripMenuItem;
     }
 }
 

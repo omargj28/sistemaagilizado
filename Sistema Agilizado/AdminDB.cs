@@ -61,6 +61,44 @@ namespace Sistema_Agilizado
             }
             return dt;
         }
+
+        public DataTable BuscarPedidosPorMes(int Mes)
+        {
+            DataTable dt = new DataTable();
+            string strSQL = "SELECT * FROM pedidos ";
+            strSQL += "WHERE MONTH(Fecha_entrega) = ?Mes ";
+
+            Conectar();
+            comando = new MySqlCommand(strSQL, sqlConexion);
+            comando.Parameters.Add(new MySqlParameter("?Mes", Mes));
+            adaptador = new MySqlDataAdapter(comando);
+            adaptador.Fill(dt);
+            Desconectar();
+            if (dt == null)
+            {
+                return dt = new DataTable();
+            }
+            return dt;
+        }
+
+        public DataTable BuscarPedidosPorNombre(string nombre)
+        {
+            DataTable dt = new DataTable();
+            string strSQL = "SELECT Nombre FROM pedidos ";
+            strSQL += "WHERE Nombre = ?Nombre ";
+
+            Conectar();
+            comando = new MySqlCommand(strSQL, sqlConexion);
+            comando.Parameters.Add(new MySqlParameter("?Nombre", nombre));
+            adaptador = new MySqlDataAdapter(comando);
+            adaptador.Fill(dt);
+            Desconectar();
+            if (dt == null)
+            {
+                return dt = new DataTable();
+            }
+            return dt;
+        }
        
         public void InsertarPedidos(string nombre, DateTime fecha_reg, DateTime fecha_entrega, bool _diseño, bool _tarjetas, bool _web, bool _folletos, bool _volantes, bool _impresion, bool _ifolletos, bool _itarjetas, bool _ivolantes)
         {
